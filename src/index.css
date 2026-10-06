@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ivory: #FAF7F2;
+    --ivory-mid: #F0EBE3;
+    --teak: #1A0F08;
+    --teak-mid: #3D2415;
+    --teak-light: #7A5C3F;
+    --gold: #8A7A2E;
+    --gold-warm: #B59A45;
+    --gold-light: #D4C07A;
+    --cream: #FAF7F2;
+    --panel: #F2ECE4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--ivory);
+    color: var(--teak);
+    font-family: 'Jost', 'Futura', 'Century Gothic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-kerning: normal;
+    font-feature-settings: 'kern', 'liga';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', 'Cormorant', Garamond, Georgia, 'Times New Roman', serif;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Old-style figures look out of place in stats and dimensions */
+  .font-serif {
+    font-variant-numeric: lining-nums;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold-warm);
+    outline-offset: 3px;
+  }
+
+  /* iOS zooms the page when a focused field is under 16px */
+  @media (max-width: 767px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer utilities {
+  .text-teak { color: var(--teak); }
+  .text-teak-mid { color: var(--teak-mid); }
+  .text-teak-light { color: var(--teak-light); }
+  .text-gold { color: var(--gold); }
+  .text-gold-warm { color: var(--gold-warm); }
+  .bg-ivory { background-color: var(--ivory); }
+  .bg-ivory-mid { background-color: var(--ivory-mid); }
+  .bg-panel { background-color: var(--panel); }
+  .bg-teak { background-color: var(--teak); }
+  .bg-teak-mid { background-color: var(--teak-mid); }
+  .border-gold { border-color: var(--gold); }
+  .border-gold-light { border-color: var(--gold-light); }
+  .border-teak { border-color: var(--teak); }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .container-wide {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .container-wide {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-wide {
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 mb-4;
+  }
+
+  .eyebrow-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-gold-warm flex-shrink-0;
+  }
+
+  .eyebrow-text {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-gold-warm;
+  }
+
+  .heading-xl {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply text-5xl sm:text-6xl lg:text-7xl font-medium leading-[0.95] tracking-tight;
+    color: var(--teak);
+  }
+
+  .heading-lg {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply text-4xl sm:text-5xl font-medium leading-[1.0] tracking-tight;
+    color: var(--teak);
+  }
+
+  .heading-md {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    @apply text-2xl sm:text-3xl font-medium leading-[1.1] tracking-tight;
+    color: var(--teak);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium tracking-wide
+           bg-teak text-ivory rounded-none transition-all duration-300
+           hover:bg-teak-mid;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium tracking-wide
+           border border-teak text-teak rounded-none transition-all duration-300
+           hover:bg-teak hover:text-ivory;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-sm font-medium tracking-wide
+           text-teak transition-all duration-300 hover:text-gold-warm;
+    letter-spacing: 0.04em;
+  }
+
+  .card-product {
+    @apply relative overflow-hidden bg-panel transition-all duration-500
+           hover:-translate-y-1 cursor-pointer;
+  }
+
+  .divider-ornament {
+    @apply flex items-center gap-4 my-8;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    @apply flex-1 h-px;
+    background-color: var(--gold-light);
+    opacity: 0.6;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--teak-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--teak-mid); }
+
+/* Noise grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
